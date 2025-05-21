@@ -1,0 +1,601 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        
+         <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZKPN22P1K9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZKPN22P1K9');
+    </script>
+        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Abarrotes el Profe</title>
+    <!-- Fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Nunito:wght@400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Iconos de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header_section {
+            background-color: #2c3e50;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 600;
+            color: white;
+            font-size: 24px;
+        }
+
+        .nav-link {
+            font-family: 'Montserrat', sans-serif;
+            color: #ecf0f1;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #3498db;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h2, h3, h5 {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 24px;
+        }
+
+        h5 {
+            font-size: 20px;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .carrusel-section {
+            padding: 60px 0;
+            background-color: #f5f7fa;
+        }
+        
+        .carrusel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .carrusel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carrusel-slide {
+            min-width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .carrusel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(52, 152, 219, 0.7);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .carrusel-control:hover {
+            background-color: rgba(41, 128, 185, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carrusel-prev {
+            left: 20px;
+        }
+        
+        .carrusel-next {
+            right: 20px;
+        }
+        
+        .carrusel-indicadores {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .carrusel-indicador {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carrusel-indicador.active {
+            background-color: white;
+            transform: scale(1.3);
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            width: 250px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-family: 'Nunito', sans-serif;
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .contact-form input:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        .btn_on-hover {
+            padding: 12px 30px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn_on-hover:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .info_section {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .info_section h5 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .info_section p {
+            color: #ecf0f1;
+            text-align: center;
+        }
+
+        .footer_section {
+            background-color: #1a252f;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .carrusel-slide {
+                height: 350px;
+            }
+            
+            .section-container {
+                margin: 20px;
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 300px;
+            }
+                
+        }
+        
+        @media (max-width: 576px) {
+            .carrusel-slide {
+                height: 250px;
+            }
+            
+            .carrusel-control {
+                padding: 10px;
+                font-size: 18px;
+            }
+            
+            .section-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+        
+<body>
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="index.html">
+            Abarrotes El Profe
+          </a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Inicio <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login-nuevo.php">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="mostrar.php">Productos</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Sección Quienes Somos -->
+    <section class="section-container">
+        <h2>Quienes somos</h2>
+        <p>
+            Abarrotes el Profe es una tienda de abarrotes abierta desde el 2020 que se compromete a estar abastecida de los mejores productos y la mejor disposición ante el cliente.
+        </p>
+    </section>
+
+    <!-- Carrusel -->
+    <section class="carrusel-section">
+        <div class="carrusel-container">
+            <div class="carrusel">
+                <div class="carrusel-slide" style="background-image: url('img/abarrotes-1.png');"></div>
+                <div class="carrusel-slide" style="background-image: url('img/abarrotes-2.png');"></div>
+                <div class="carrusel-slide" style="background-image: url('img/Mapa del sitio.png');"></div>
+            </div>
+            <button class="carrusel-control carrusel-prev"><i class="bi bi-chevron-left"></i></button>
+            <button class="carrusel-control carrusel-next"><i class="bi bi-chevron-right"></i></button>
+            <div class="carrusel-indicadores">
+                <div class="carrusel-indicador active"></div>
+                <div class="carrusel-indicador"></div>
+                <div class="carrusel-indicador"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Productos -->
+    <section class="section-container">
+        <h2>Productos que hemos agregado!</h2>
+        <p>
+            Estos son algunos de los productos recien llegados que han estado con gran popularidad.
+        </p>
+        
+        <div class="card-container">
+            <template id="template-card">
+                <div class="card">
+                    <img src="" class="card-img-top" alt="Producto">
+                    <div class="card-body"> 
+                        <h3 class="card-title">Modelo</h3>
+                        <p class="card-text">$<span>300.00</span></p>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </section>
+
+
+    <!-- Info Section -->
+    <section class="info_section">
+        <div class="section-container" style="background-color: transparent; box-shadow: none;">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info_contact">
+                        <h5>Datos del negocio</h5>
+                        <p>Dirección: Praxedis G.Guerrero, Ciudad Juarez, Chihuahua.</p>
+                        <p>Teléfono: 656-168-54-83</p>
+                        <p>Email: mundocúbico@gmail.com</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info_info">
+                        <h5>Horario de tienda</h5>
+                        <p>Lunes a Viernes: 8:30 AM - 8:00 PM</p>
+                        <p>Sábados: 8:30 AM - 6:00 PM</p>
+                        <p>Domingos: 9:00 AM - 4:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Footer Section -->
+<footer class="info_section">
+    <div class="footer-content">
+        <!-- Sección de información de contacto -->
+
+        <!-- Sección del código QR -->
+        <div class="footer-section">
+            <h5 class="footer-title">Escanea nuestro QR</h5>
+            <img src="img/QR.png" alt="Código QR de Abarrotes El Profe" class="qr-code">
+            <p class="footer-text">Visita nuestro sitio web</p>
+        </div>
+
+        <!-- Sección de código QR extra -->
+        <div class="footer-section">
+            <h5 class="footer-title">QR Github</h5>
+            <img src="img/QR2.png" alt="Código QR adicional" class="qr-code">
+           
+        </div>
+
+        <!-- Sección de imagen adicional -->
+        <div class="footer-section">
+            <h5 class="footer-title">Paleta de colores</h5>
+            <img src="img/Paleta.png" alt="Ubicación del negocio" class="footer-image">
+        </div>
+        
+        <div class="footer-section">
+            <h5 class="footer-title">Tipografías</h5>
+            <div class="font-sample font-josefin">Josefin Sans (Títulos)</div>
+            <div class="font-sample font-nunito">Nunito (Texto)</div>
+            <div class="font-sample font-montserrat">Montserrat (Botones)</div>
+            <p class="footer-text">Google Fonts</p>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; <?php echo date("Y"); ?> Abarrotes El Profe. Todos los derechos reservados.</p>
+    </div>
+    
+    <style>
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .qr-code, .footer-image {
+            width: 100px; 
+            height: 100px; 
+            object-fit: contain; 
+            margin: 10px auto;
+            display: block;
+            border-radius: 8px;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .footer-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #ecf0f1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .footer-text {
+            color: #bdc3c7;
+            font-size: 13px;
+            line-height: 1.4;
+            margin-top: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .font-sample {
+            margin: 5px 0;
+            padding: 5px;
+        }
+        
+        .font-josefin {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+        
+        .font-nunito {
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .footer-section {
+                flex: 100%;
+                margin-bottom: 15px;
+                padding: 10px;
+            }
+            
+            .qr-code, .footer-image {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</footer>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const carrusel = document.querySelector('.carrusel');
+            const slides = document.querySelectorAll('.carrusel-slide');
+            const indicadores = document.querySelectorAll('.carrusel-indicador');
+            const prevBtn = document.querySelector('.carrusel-prev');
+            const nextBtn = document.querySelector('.carrusel-next');
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            let intervalo;
+
+            function updateCarrusel() {
+                carrusel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                indicadores.forEach((indicador, index) => {
+                    if (index === currentIndex) {
+                        indicador.classList.add('active');
+                    } else {
+                        indicador.classList.remove('active');
+                    }
+                });
+            }
+
+            
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateCarrusel();
+                resetInterval();
+            }
+
+           
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateCarrusel();
+                resetInterval();
+            }
+
+            
+            function resetInterval() {
+                clearInterval(intervalo);
+                intervalo = setInterval(nextSlide, 5000);
+            }
+
+            
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            
+            indicadores.forEach((indicador, index) => {
+                indicador.addEventListener('click', function() {
+                    currentIndex = index;
+                    updateCarrusel();
+                    resetInterval();
+                });
+            });
+
+            
+            intervalo = setInterval(nextSlide, 7000);
+        });
+    </script>
+</body>
+</html>

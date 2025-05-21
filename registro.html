@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Almacén de Abarrotes el abuelo</title>
+
+  <link rel="stylesheet" href="css/estilo-registro.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="hero_area">
+    <!-- header section starts -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="index.html">
+          </a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Inicio <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login-nuevo.php">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="registro.html">Productos (actual)</a>
+                </li>
+              </ul>
+              <div class="user_option">
+                <a href=""></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- header section ends -->
+  </div>
+
+  <!-- contenido principal -->
+  <div class="container">
+    <header>
+      <h1>Bienvenido al Almacén de Artículos</h1>
+      <p>Gestiona el registro y almacenamiento de tus artículos.</p>
+    </header>
+
+    <div class="add-item-form">
+      <h2>Agregar Artículo</h2>
+      <form id="add-item-form">
+        <label for="item-id">ID del Artículo:</label>
+        <input type="text" id="item-id" required>
+        
+        <label for="item-description">Descripción:</label>
+        <textarea id="item-description" required></textarea>
+        
+        <label for="item-image">Imagen URL:</label>
+        <input type="url" id="item-image" required>
+        
+        <button type="submit">Agregar Artículo</button>
+      </form>
+    </div>
+    
+    <div class="item-list">
+      <h2>Artículos Registrados</h2>
+      <ul id="item-list">
+        <li><em>No hay artículos registrados.</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Almacén de Artículos. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

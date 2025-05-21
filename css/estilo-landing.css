@@ -1,0 +1,277 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Tipografía general */
+  body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+  
+  /* Navegación */
+  .header_section {
+    background-color: #0d6efd;
+    padding: 1rem 0;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #ffc107;
+  }
+  
+  /* Secciones */
+  section {
+    padding: 60px 20px;
+    background-color: #fff;
+  }
+  
+  .heading_container h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .heading_container p {
+    color: #555;
+    font-size: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  /* Formulario de contacto */
+  .contact-form {
+    background-color: #f1f1f1;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  
+  .contact-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn_on-hover {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn_on-hover:hover {
+    background-color: #004aad;
+  }
+  
+  /* Footer */
+  .footer_section {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 20px 0;
+    font-size: 0.9rem;
+  }
+  
+  /* Info section */
+  .info_section {
+    background-color: #eee;
+    padding: 40px 20px;
+  }
+  
+  .info_section h5 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+  
+  .info_section p {
+    font-size: 0.95rem;
+    color: #444;
+  }
+  
+  /* Productos box */
+  .work_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .box {
+    width: 220px;
+    height: 150px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+<style>
+    /* Estilos para el carrusel - Versión ajustada */
+    .container-all {
+        position: relative;
+        max-width: 800px; /* Reducimos el ancho máximo */
+        width: 90%; /* Usamos porcentaje para mejor responsividad */
+        height: 400px; /* Altura fija para el contenedor */
+        margin: 20px auto; /* Margen superior e inferior */
+        overflow: hidden;
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+    }
+
+    .slide {
+        display: flex;
+        height: 100%; /* Ocupa toda la altura del contenedor */
+        transform: translate3d(0, 0, 0);
+        transition: all 600ms;
+        animation-name: autoplay;
+        animation-duration: 6.5s;
+        animation-direction: alternate;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+    }
+
+    .item-slide {
+        position: relative;
+        flex-shrink: 0;
+        flex-grow: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .item-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Asegura que la imagen cubra el espacio manteniendo proporciones */
+        object-position: center; /* Centra la imagen */
+    }
+
+    .pagina {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        z-index: 10; /* Asegura que esté sobre las imágenes */
+    }
+
+    .pagina-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid white;
+        width: 12px; /* Más pequeño */
+        height: 12px; /* Más pequeño */
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 5px; /* Menos espacio entre puntos */
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.5);
+        transition: all 300ms;
+    }
+
+    .pagina-item:hover {
+        transform: scale(1.5); /* Menos aumento al hacer hover */
+    }
+
+    .pagina-item img {
+        display: inline-block;
+        max-width: none;
+        height: 100%;
+        transform: scale(1);
+        opacity: 0;
+        transition: all 300ms;
+    }
+
+    /* Resto de los estilos permanecen igual */
+    input[id="1"]:checked ~ .slide {
+        animation: none;
+        transform: translate3d(0, 0, 0);
+    }
+
+    input[id="1"]:checked ~ .pagina .pagina-item[for="1"] {
+        background: #fff;
+    }
+
+    input[id="2"]:checked ~ .slide {
+        animation: none;
+        transform: translate3d(calc(-100% * 1), 0, 0);
+    }
+
+    input[id="2"]:checked ~ .pagina .pagina-item[for="2"] {
+        background: #fff;
+    }
+
+    input[id="3"]:checked ~ .slide {
+        animation: none;
+        transform: translate3d(calc(-100% * 2), 0, 0);
+    }
+
+    input[id="3"]:checked ~ .pagina .pagina-item[for="3"] {
+        background: #fff;
+    }
+
+    input[id="4"]:checked ~ .slide {
+        animation: none;
+        transform: translate3d(calc(-100% * 3), 0, 0);
+    }
+
+    input[id="4"]:checked ~ .pagina .pagina-item[for="4"] {
+        background: #fff;
+    }
+
+    input[id="5"]:checked ~ .slide {
+        animation: none;
+        transform: translate3d(calc(-100% * 4), 0, 0);
+    }
+
+    input[id="5"]:checked ~ .pagina .pagina-item[for="5"] {
+        background: #fff;
+    }
+
+    @keyframes autoplay {
+        20% { transform: translate3d(calc(-100% * 0), 0, 0); }
+        40% { transform: translate3d(calc(-100% * 1), 0, 0); }
+        60% { transform: translate3d(calc(-100% * 2), 0, 0); }
+        80% { transform: translate3d(calc(-100% * 3), 0, 0); }
+        100% { transform: translate3d(calc(-100% * 4), 0, 0); }
+    }
